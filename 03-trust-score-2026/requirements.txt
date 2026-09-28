@@ -1,0 +1,6 @@
+python-dotenv
+requests
+openai
+anthropic
+pymupdf
+pytest

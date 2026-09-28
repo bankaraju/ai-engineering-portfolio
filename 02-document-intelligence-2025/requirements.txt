@@ -1,0 +1,40 @@
+# Third-party packages imported by the files in src/ (unpinned).
+# Note: semantic_document_pipeline.py uses the pre-0.10 llama_index API
+# (llama_index.embeddings.BGEEmbedding, ServiceContext); the other files use
+# llama_index.core (>=0.10). They were written against different versions and
+# will not all import in one environment.
+aiohttp
+anthropic
+camelot-py
+chromadb
+easyocr
+fastapi
+google-api-python-client
+google-cloud-documentai
+langchain
+langchain-anthropic
+langchain-community
+llama-index
+llama-index-embeddings-huggingface
+llama-index-vector-stores-postgres
+numpy
+pandas
+pdfplumber
+Pillow
+psycopg2-binary
+pydantic
+PyMuPDF
+pytesseract
+python-doctr
+requests
+scikit-learn
+scipy
+sentence-transformers
+spacy
+sqlalchemy
+tabula-py
+torch
+transformers
+uvicorn
+xlsxwriter
+yfinance

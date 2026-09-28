@@ -1,0 +1,27 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: every file compiles
+        run: python -m compileall -q 01-book-rag-2025 02-document-intelligence-2025 03-trust-score-2026
+      - name: 01 offline demo runs
+        run: |
+          pip install PyMuPDF numpy pandas scikit-learn tqdm
+          cd 01-book-rag-2025 && python demo.py
+      - name: 03 trust-score tests (LLM mocked)
+        run: |
+          pip install -r 03-trust-score-2026/requirements.txt
+          cd 03-trust-score-2026 && python -m pytest -v tests

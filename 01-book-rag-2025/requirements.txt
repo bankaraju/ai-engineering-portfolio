@@ -1,0 +1,22 @@
+# Demo (offline): PyMuPDF, numpy, pandas, scikit-learn, tqdm
+PyMuPDF
+numpy
+pandas
+scikit-learn
+tqdm
+
+# Indexing / RAG service (need PostgreSQL + pgvector; models download on first use)
+psycopg2-binary
+sentence-transformers
+llama-index-core
+llama-index-embeddings-huggingface
+llama-index-vector-stores-postgres
+anthropic
+fastapi
+pydantic
+uvicorn
+
+# Annual-reports scaffold (local models via Ollama)
+llama-index-embeddings-ollama
+llama-index-llms-ollama
+requests
