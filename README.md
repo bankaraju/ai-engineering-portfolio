@@ -65,6 +65,9 @@ pip install -r 03-trust-score-2026/requirements.txt
 cd 03-trust-score-2026 && python -m pytest -v tests
 ```
 
+02 has no offline command. Every file needs external services (PostgreSQL + pgvector, Google
+Document AI / Drive, a Claude API key); its README lists what each file needs. It is here to be read.
+
 CI runs both on Python 3.10–3.12 and compiles every file in the repo.
 
 ## Honest notes

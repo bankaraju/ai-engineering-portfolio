@@ -53,6 +53,26 @@ answer grounded in the filings.
 | `src/banking_platform_api.py` | FastAPI banking analysis service: query routing, pgvector retrieval, Claude analysis, macro regression, stress tests, Excel export, HTML UI |
 | `src/config/setup.py`, `src/ingestion/google_drive_monitor.py`, `src/vertex_ai_client.py` | Small stand-ins for modules of the original codebase that are not published here, so local imports resolve |
 
+## Running it
+
+**Nothing in this section runs offline.** It is published as code to read, not as a demo. Every
+file depends on at least one external service, and the files were written against different
+LlamaIndex versions, so they do not all install into one environment. CI only checks that every
+file compiles.
+
+| File | Needs to run |
+|---|---|
+| `document_ingestion_pipeline.py` | Google Drive + Google Document AI (`GOOGLE_APPLICATION_CREDENTIALS`, `DOCAI_PROCESSOR_NAME`, `GDRIVE_FOLDER_ID`) |
+| `table_extraction_cascade.py` | PostgreSQL for run logs (`PG*`); camelot/tabula (Ghostscript, Java), Tesseract, docTR/EasyOCR models; a PDF at `TEST_PDF_PATH` |
+| `semantic_document_pipeline.py` | BGE model download, a Claude API key (`ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`); the older pre-0.10 LlamaIndex API |
+| `multi_index_retrieval.py` | PostgreSQL + pgvector (`PG*`), BGE model download |
+| `langchain_banking_rag.py` | PostgreSQL + pgvector (`PGVECTOR_CONNECTION_STRING`), a Claude API key |
+| `narrative_pattern_mining.py` | spaCy English model, FinBERT and BGE downloads, PostgreSQL (via `config/setup.py`) |
+| `banking_platform_api.py` | PostgreSQL + pgvector, a Claude API key, market data via yfinance (network) |
+
+Variable names are listed in `.env.example`. For offline, runnable code, see
+[`01-book-rag-2025`](../01-book-rag-2025/) (demo) and [`03-trust-score-2026`](../03-trust-score-2026/) (tests).
+
 ## Status
 
 Preserved as written in 2025, with credentials, hosts and file paths moved to
